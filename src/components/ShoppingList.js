@@ -27,7 +27,12 @@ function ShoppingList() {
       return item
     })
     setItems(updatedItems)
-    //console.log("In shoppig cart",updatedItem);
+  }
+
+  //delete function
+  function handleDeleteItem(deletedItem){
+    const updatedItems = items.filter((item) => item.id !== deletedItem.id);
+    setItems(updatedItems);
   }
 
   function handleCategoryChange(category) {
@@ -49,7 +54,7 @@ function ShoppingList() {
       />
       <ul className="Items">
         {itemsToDisplay.map((item) => (
-          <Item key={item.id} item={item} onUpdateItem={handleUpdateItem}/>
+          <Item key={item.id} item={item} onUpdateItem={handleUpdateItem} onDeleteItem={handleDeleteItem}/>
         ))}
       </ul>
     </div>
